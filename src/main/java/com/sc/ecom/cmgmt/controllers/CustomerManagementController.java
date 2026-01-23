@@ -1,12 +1,16 @@
 package com.sc.ecom.cmgmt.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.sc.ecom.cmgmt.requests.CustomerRequest;
+import com.sc.ecom.cmgmt.services.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/customers")
 public class CustomerManagementController {
+
+    @Autowired
+    CustomerService customerService;
 
     /**
      *  Request url path: <a href="http://localhost:8080/api/v1/customers/info">info</a>
@@ -29,6 +33,29 @@ public class CustomerManagementController {
     public String getCustomerdetails() {
         System.out.print("getCustomerOrders");
         return "Customer Orders";
+    }
+
+    /**
+     *  Request url path: <a href="http://localhost:8080/api/v1/customers/create">create</a>
+     * */
+    @RequestMapping(path = "/create", method = RequestMethod.POST)
+    public  String createCustomer(@RequestBody CustomerRequest request){
+        return customerService.createCustomer(request);
+    }
+
+    /**
+     *  Request url path: <a href="http://localhost:8080/api/v1/customers/modify">modify</a>
+     * */
+    @RequestMapping(path = "/modify", method = RequestMethod.PUT)
+    public  String modifyCustomer(@RequestBody CustomerRequest request){
+        System.out.println("modifyCustomer: " + request);
+        return customerService.modifyCustomer(request);
+    }
+
+    @RequestMapping(path = "/find/{id}", method = RequestMethod.GET)
+    public CustomerRequest findCustomerById(@PathVariable Long id) {
+        System.out.println("findCustomerById");
+        return customerService.findCustomerById(id);
     }
 
 }

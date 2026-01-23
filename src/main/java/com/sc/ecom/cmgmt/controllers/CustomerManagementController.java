@@ -25,5 +25,10 @@ public class CustomerManagementController {
         System.out.println("getCustomerOrders");
         return "Customer Orders";
     }
+    @RequestMapping(path = "details", method=RequestMethod.GET)
+    public String getCustomerdetails() {
+        System.out.println("getCustomerOrders");
+        return "Customer Orders";
+    }
 
 }

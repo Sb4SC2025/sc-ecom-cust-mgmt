@@ -1,9 +1,12 @@
 package com.sc.ecom.cmgmt.controllers;
 
 import com.sc.ecom.cmgmt.requests.CustomerRequest;
+import com.sc.ecom.cmgmt.responses.CustomerResponse;
 import com.sc.ecom.cmgmt.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/customers")
@@ -33,9 +36,10 @@ public class CustomerManagementController {
     }
     //@RequestMapping(path = "details", method=RequestMethod.GET)
     @GetMapping("/details")
-    public String getCustomerdetails() {
-        System.out.print("getCustomerOrders");
-        return "Customer Orders";
+    public List<CustomerResponse> getCustomerdetails() {
+        System.out.print("getCustomerdetails");
+        return customerService.findAllCustomers();
+        //return "Customer Details";
     }
 
     /**
@@ -59,7 +63,7 @@ public class CustomerManagementController {
 
    // @RequestMapping(path = "/find/{id}", method = RequestMethod.GET)
     @GetMapping("/find/{id}")
-    public CustomerRequest findCustomerById(@PathVariable Long id) {
+    public CustomerResponse findCustomerById(@PathVariable Long id) {
         System.out.println("findCustomerById");
         return customerService.findCustomerById(id);
     }

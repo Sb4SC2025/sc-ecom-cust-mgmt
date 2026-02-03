@@ -1,14 +1,16 @@
 package com.sc.ecom.cmgmt.dao;
 
-import com.sc.ecom.cmgmt.requests.CustomerRequest;
+
+
+import com.sc.ecom.cmgmt.dao.entities.Customer;
 
 import java.util.List;
 
 public interface CustomerDao {
 
-    public String saveCustomer(CustomerRequest customer);
-    public List<CustomerRequest> getAllCustomers();
-    public String updateCustomer(CustomerRequest customer);
-    public CustomerRequest getCustomerById(Long custId);
+    public String saveCustomer(Customer customer);
+    public List<Customer> getAllCustomers();
+    public String updateCustomer(Customer customer);
+    public Customer getCustomerById(Long custId);
     public String removeCustomerById(Long id);
 }

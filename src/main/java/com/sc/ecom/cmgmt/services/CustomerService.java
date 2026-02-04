@@ -13,4 +13,8 @@ public interface CustomerService {
     public String removeCustomerById(Long id);
 
     public List<CustomerResponse> findAllCustomers();
+
+    public List<CustomerResponse> findCustomerByAddress(String addr);
+
+    public List<CustomerResponse> findCustomerByName(String name);
 }

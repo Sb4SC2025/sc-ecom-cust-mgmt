@@ -15,27 +15,11 @@ public class CustomerManagementController {
     @Autowired
     private CustomerService customerService;
 
-    /**
-     *  Request url path: <a href="http://localhost:8080/api/v1/customers/info">info</a>
-     * */
-   // @RequestMapping(path = "/info", method = RequestMethod.GET)
-    @GetMapping("/info")
-    public String getCustomerInfo() {
-        System.out.println("getCustomerInfo");
-        return "Customer Information";
-    }
 
     /**
-     *  Request url path: <a href="http://localhost:8080/api/v1/customers/orders">orders</a>
+     *  Request method: GET and url path: http://localhost:8080/api/v1/customers
      * */
-   // @RequestMapping(path = "/orders", method = RequestMethod.GET)
-    @GetMapping("/orders")
-    public String getCustomerOrders() {
-        System.out.println("getCustomerOrders");
-        return "Customer Orders";
-    }
-    //@RequestMapping(path = "details", method=RequestMethod.GET)
-    @GetMapping("/details")
+    @GetMapping
     public List<CustomerResponse> getCustomerdetails() {
         System.out.print("getCustomerdetails");
         return customerService.findAllCustomers();
@@ -43,36 +27,59 @@ public class CustomerManagementController {
     }
 
     /**
-     *  Request url path: <a href="http://localhost:8080/api/v1/customers/create">create</a>
+     *  Request method: POST url path: http://localhost:8080/api/v1/customers
      * */
    // @RequestMapping(path = "/create", method = RequestMethod.POST)
-    @PostMapping("/create")
+    @PostMapping
     public  String createCustomer(@RequestBody CustomerRequest request){
         return customerService.createCustomer(request);
     }
 
     /**
-     *  Request url path: <a href="http://localhost:8080/api/v1/customers/modify">modify</a>
+     *  Request method: PUT url path: http://localhost:8080/api/v1/customers
      * */
     //@RequestMapping(path = "/modify", method = RequestMethod.PUT)
-    @PutMapping("/modify")
+    @PutMapping
     public  String modifyCustomer(@RequestBody CustomerRequest request){
         System.out.println("modifyCustomer: " + request);
         return customerService.modifyCustomer(request);
     }
 
-   // @RequestMapping(path = "/find/{id}", method = RequestMethod.GET)
-    @GetMapping("/find/{id}")
+    /**
+     *  Request method: DELETE url path: http://localhost:8080/api/v1/customers/{id}
+     * */
+    @DeleteMapping("/{id}")
+    public String removeCustomerById(@PathVariable Long id){
+        System.out.println("removeCustomerById");
+        return customerService.removeCustomerById(id);
+    }
+
+
+    /**
+     *  Request method: GET url path: http://localhost:8080/api/v1/customers/id/{id}
+     * */
+    @GetMapping("/id/{id}")
     public CustomerResponse findCustomerById(@PathVariable Long id) {
         System.out.println("findCustomerById");
         return customerService.findCustomerById(id);
     }
 
-   // @RequestMapping(path = "/remove/{id}", method = RequestMethod.DELETE)
-    @DeleteMapping("/remove/{id}")
-    public String removeCustomerById(@PathVariable Long id){
-        System.out.println("removeCustomerById");
-        return customerService.removeCustomerById(id);
+    /**
+     *  Request method: GET url path: http://localhost:8080/api/v1/customers/address/{addr}
+     * */
+    @GetMapping("/addr/{addr}")
+    public List<CustomerResponse> findCustomerByAddress(@PathVariable String addr) {
+        System.out.println("findCustomerByAddress");
+        return customerService.findCustomerByAddress(addr);
+    }
+
+    /**
+     *  Request method: GET url path: http://localhost:8080/api/v1/customers/name/{name}
+     * */
+    @GetMapping("/name/{name}")
+    public List<CustomerResponse> findCustomerByName(@PathVariable String name) {
+        System.out.println("findCustomerByName");
+        return customerService.findCustomerByName(name);
     }
 
 }

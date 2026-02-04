@@ -13,4 +13,7 @@ public interface CustomerDao {
     public String updateCustomer(Customer customer);
     public Customer getCustomerById(Long custId);
     public String removeCustomerById(Long id);
+
+    public List<Customer> findCustomerByAddress(String addr);
+    public List<Customer> findCustomerByName(String name);
 }

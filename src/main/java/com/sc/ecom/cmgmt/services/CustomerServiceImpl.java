@@ -86,7 +86,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String removeCustomerById(Long id) {
-        System.out.println("Modifying customer: " + id);
+        System.out.println("Remove customer: " + id);
         String deleteMessage = customerDao.removeCustomerById(id);
         if(deleteMessage.equals("Customer deleted successfully")) {
             System.out.println("Customer deleted successfully in service layer");
@@ -102,6 +102,36 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> customers = customerDao.getAllCustomers();
         List<CustomerResponse> customerResponses = convertEntityListToResponseList(customers);
         return customerResponses;
+    }
+
+    @Override
+    public List<CustomerResponse> findCustomerByAddress(String addr) {
+        System.out.println("Finding customer by Address: " + addr);
+        List<Customer> customers = customerDao.findCustomerByAddress(addr);
+        List<CustomerResponse> customerResponses = null;
+        if(customers != null) {
+            System.out.println("Customers found: " + addr);
+            customerResponses = convertEntityListToResponseList(customers);
+            return customerResponses;
+        } else {
+            System.out.println("Customer not found with Address: " + addr);
+            return null;
+        }
+    }
+
+    @Override
+    public List<CustomerResponse>  findCustomerByName(String name) {
+        System.out.println("Finding customer by Name: " + name);
+        List<Customer> customers = customerDao.findCustomerByName(name);
+        List<CustomerResponse> customerResponses = null;
+        if(customers != null) {
+            System.out.println("Customers found: " + name);
+            customerResponses = convertEntityListToResponseList(customers);
+            return customerResponses;
+        } else {
+            System.out.println("Customer not found with Address: " + name);
+            return null;
+        }
     }
 
     private List<CustomerResponse> convertEntityListToResponseList(List<Customer> customers) {

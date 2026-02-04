@@ -75,4 +75,14 @@ public class CustomerDaoImpl implements CustomerDao{
         }
         return "Customer not found";
     }
+
+    @Override
+    public List<Customer> findCustomerByAddress(String addr) {
+        return customerRepository.findAllByAddress(addr);
+    }
+
+    @Override
+    public List<Customer> findCustomerByName(String name) {
+        return customerRepository.findByName(name);
+    }
 }

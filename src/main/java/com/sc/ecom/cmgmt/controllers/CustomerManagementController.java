@@ -20,8 +20,8 @@ public class CustomerManagementController {
      *  Request method: GET and url path: http://localhost:8080/api/v1/customers
      * */
     @GetMapping
-    public List<CustomerResponse> getCustomerdetails() {
-        System.out.print("getCustomerdetails");
+    public List<CustomerResponse> findAllCustomers() {
+        System.out.print("findAllCustomers");
         return customerService.findAllCustomers();
         //return "Customer Details";
     }

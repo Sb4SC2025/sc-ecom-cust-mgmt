@@ -1,6 +1,7 @@
 package com.sc.ecom.cmgmt.services;
 
 import com.sc.ecom.cmgmt.dao.CustomerDao;
+import com.sc.ecom.cmgmt.dao.entities.Address;
 import com.sc.ecom.cmgmt.dao.entities.Customer;
 import com.sc.ecom.cmgmt.requests.CustomerRequest;
 import com.sc.ecom.cmgmt.responses.CustomerResponse;
@@ -39,7 +40,9 @@ public class CustomerServiceImpl implements CustomerService {
             customer = new Customer();
             customer.setId(request.getCustId());
             customer.setName(request.getCustName());
-            customer.setAddress(request.getCustAddr());
+            Address addr = new Address();
+            addr.setAddressId(request.getCustAddr());
+            customer.setAddress(addr);
         }
         return customer;
     }

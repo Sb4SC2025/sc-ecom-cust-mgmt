@@ -1,10 +1,7 @@
 package com.sc.ecom.cmgmt.dao.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "customers")
@@ -17,8 +14,9 @@ public class Customer {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "addr")
-    private String address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "addr_id", referencedColumnName = "addr_id")
+    private Address address;
 
     public Long getId() {
         return id;
@@ -36,11 +34,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 }

@@ -24,7 +24,6 @@ public class CustomerDaoImpl implements CustomerDao{
         return "Customer saved successfully";
     }
 
-
     @Override
     public List<Customer> getAllCustomers() {
        // return customerDB;
@@ -43,7 +42,7 @@ public class CustomerDaoImpl implements CustomerDao{
         Customer dbCustomer = customerRepository.findById(customer.getId()).orElse(null);
         if(Objects.nonNull(dbCustomer)){
             dbCustomer.setName(customer.getName());
-            dbCustomer.setAddress(customer.getAddress());
+            //dbCustomer.setAddress(customer.getAddress());
             customerRepository.save(dbCustomer);
         }
         return "Customer not found";

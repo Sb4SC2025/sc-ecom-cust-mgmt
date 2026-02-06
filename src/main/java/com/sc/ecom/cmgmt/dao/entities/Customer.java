@@ -15,7 +15,7 @@ public class Customer {
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cust_id", referencedColumnName = "id")
+    @JoinColumn(name = "addr_id", referencedColumnName = "addr_id")
     private Address address;
 
     public Long getId() {
@@ -34,4 +34,11 @@ public class Customer {
         this.name = name;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

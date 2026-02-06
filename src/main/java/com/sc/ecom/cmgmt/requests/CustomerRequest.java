@@ -1,9 +1,11 @@
 package com.sc.ecom.cmgmt.requests;
 
+import com.sc.ecom.cmgmt.dao.entities.Address;
+
 public class CustomerRequest {
     private Long custId;
     private String custName;
-    private String custAddr;
+    private Long custAddr;
 
     @Override
     public String toString() {
@@ -30,11 +32,11 @@ public class CustomerRequest {
         this.custName = custName;
     }
 
-    public String getCustAddr() {
+    public Long getCustAddr() {
         return custAddr;
     }
 
-    public void setCustAddr(String custAddr) {
+    public void setCustAddr(Long custAddr) {
         this.custAddr = custAddr;
     }
 }

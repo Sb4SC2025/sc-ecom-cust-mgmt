@@ -15,7 +15,6 @@ public class CustomerManagementController {
     @Autowired
     private CustomerService customerService;
 
-
     /**
      *  Request method: GET and url path: http://localhost:8080/api/v1/customers
      * */
@@ -74,7 +73,7 @@ public class CustomerManagementController {
     }
 
     /**
-     *  Request method: GET url path: http://localhost:8080/api/v1/customers/name/{name}
+     *  Request method: GET url path: <a href="http://localhost:8080/api/v1/customers/name/">Find Customer By Name</a>{name}
      * */
     @GetMapping("/name/{name}")
     public List<CustomerResponse> findCustomerByName(@PathVariable String name) {

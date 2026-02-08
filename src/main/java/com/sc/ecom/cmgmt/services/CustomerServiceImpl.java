@@ -40,9 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
             customer = new Customer();
             customer.setId(request.getCustId());
             customer.setName(request.getCustName());
-            Address addr = new Address();
-            addr.setAddressId(request.getCustAddr());
-            customer.setAddress(addr);
+            customer.setAddress(request.getCustAddr());
         }
         return customer;
     }

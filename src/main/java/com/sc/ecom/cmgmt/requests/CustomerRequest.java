@@ -5,7 +5,7 @@ import com.sc.ecom.cmgmt.dao.entities.Address;
 public class CustomerRequest {
     private Long custId;
     private String custName;
-    private Long custAddr;
+    private Address custAddr;
 
     @Override
     public String toString() {
@@ -32,11 +32,11 @@ public class CustomerRequest {
         this.custName = custName;
     }
 
-    public Long getCustAddr() {
+    public Address getCustAddr() {
         return custAddr;
     }
 
-    public void setCustAddr(Long custAddr) {
+    public void setCustAddr(Address custAddr) {
         this.custAddr = custAddr;
     }
 }
